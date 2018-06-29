@@ -15,6 +15,13 @@ function playRound(playerSelection, computerSelection) {
     playerSelection = prompt('Rock, Paper or Scissors?');
 
     if (playerSelection.toLowerCase() === 'rock' && 
+        computerSelection.toLowerCase() === 'rock' ||
+        playerSelection.toLowerCase() === 'paper' && 
+        computerSelection.toLowerCase() === 'paper' || 
+        playerSelection.toLowerCase() === 'scissors' && 
+        computerSelection.toLowerCase() === 'scissors') {
+        return 'Draw!'
+    } else if (playerSelection.toLowerCase() === 'rock' && 
         computerSelection.toLowerCase() === 'paper') {
         computerScore += 1;
         return 'You Lose! Paper beats Rock.'
@@ -22,9 +29,6 @@ function playRound(playerSelection, computerSelection) {
                computerSelection.toLowerCase() === 'scissors') {
         playerScore += 1;
         return 'You Win! Rock beats Scissors.'
-    } else if (playerSelection.toLowerCase() === 'rock' && 
-               computerSelection.toLowerCase() === 'rock') {
-        return 'Draw!'
     } else if (playerSelection.toLowerCase() === 'paper' && 
                computerSelection.toLowerCase() === 'rock') {
         playerScore += 1;
@@ -33,9 +37,6 @@ function playRound(playerSelection, computerSelection) {
                computerSelection.toLowerCase() === 'scissors') {
         computerScore += 1;
         return 'You Lose! Scissors beats Paper.'
-    } else if (playerSelection.toLowerCase() === 'paper' && 
-               computerSelection.toLowerCase() === 'paper') {
-        return 'Draw!'
     } else if (playerSelection.toLowerCase() === 'scissors' && 
                computerSelection.toLowerCase() === 'rock') {
         computerScore += 1;
@@ -44,17 +45,14 @@ function playRound(playerSelection, computerSelection) {
                computerSelection.toLowerCase() === 'paper') {
         playerScore += 1;
         return 'You Win! Scissors beats Paper.'
-    } else if (playerSelection.toLowerCase() === 'scissors' && 
-               computerSelection.toLowerCase() === 'scissors') {
-        return 'Draw!'
     }
 }
 
 function game() {
     let playerSelection;
-    const computerSelection = computerPlay();
 
     for (let count = 1; count <= 5; count++) {
+        const computerSelection = computerPlay();
         console.log('Round ' + count + ': ' + playRound(playerSelection, computerSelection) + ' ' + playerScore + ':' + computerScore);
     }
 
